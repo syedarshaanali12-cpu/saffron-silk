@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { loadSiteData } from './lib/supabase';
 import { SiteExperience } from './site/Chrome';
 import Home from './site/Home';
@@ -10,10 +10,12 @@ const Loading=({error})=><div className="loading"><h1>Saffron & Silk</h1><p>{err
 
 export default function App(){
   const[c,setC]=useState(null),[s,setS]=useState(null),[error,setError]=useState('');
+  const location=useLocation();
   useEffect(()=>{loadSiteData().then(d=>{setC(d.content);setS(d.settings)}).catch(e=>setError(e.message))},[]);
   const ready=Boolean(c&&s);
+  const isAdmin=location.pathname==='/admin';
   return <>
-    {ready&&<SiteExperience content={c} settings={s}/>} 
+    {ready&&!isAdmin&&<SiteExperience content={c} settings={s}/>} 
     <Routes>
       <Route path="/admin" element={<Admin c={c} s={s} setC={setC} setS={setS} loadError={error}/>}/>
       <Route path="/" element={ready?<Home content={c} settings={s}/>:<Loading error={error}/>}/>
