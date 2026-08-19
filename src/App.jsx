@@ -5,6 +5,24 @@ import { isSupabaseConfigured, loadSiteData, saveSiteData, supabase, uploadSiteM
 const splitLines = (text='') => text.split('\n').map((line,i)=><span key={i}>{line}{i < text.split('\n').length-1 && <br/>}</span>);
 const clone=v=>JSON.parse(JSON.stringify(v));
 
+function PetalField({settings}){
+ const location=useLocation();
+ const effects=settings?.effects || {};
+ const amount=Math.max(0,Math.min(48,Number(effects.petalAmount ?? 16)));
+ const intensity=Math.max(.25,Math.min(2,Number(effects.animationIntensity ?? 1)));
+ const show=location.pathname==='/' || effects.showPetalsOnInteriorPages;
+ if(!show || amount===0)return null;
+ return <div className="petal-field" aria-hidden="true">{Array.from({length:amount},(_,i)=>{
+   const left=(i*37+11)%100;
+   const delay=-((i*1.73)%12);
+   const duration=(9+(i%7)*1.15)/intensity;
+   const drift=((i%2?1:-1)*(28+(i*19)%75));
+   const scale=.55+((i*13)%50)/100;
+   const rotate=(i*47)%360;
+   return <span key={i} className="petal" style={{'--left':`${left}%`,'--delay':`${delay}s`,'--duration':`${duration}s`,'--drift':`${drift}px`,'--scale':scale,'--rotate':`${rotate}deg`}}/>;
+ })}</div>;
+}
+
 function MusicControl({c}){
  const location=useLocation();
  const audioRef=useRef(null);
@@ -27,7 +45,7 @@ function Header({c}){
 }
 function SectionRail({c}){const nav=[{path:'/',label:'Home'},...c.navigation];return <aside className="section-rail">{nav.map((x,i)=><NavLink key={x.path} to={x.path} end={x.path==='/' }><span>{String(i+1).padStart(2,'0')}</span>{x.label}</NavLink>)}</aside>}
 function Footer({c}){return <footer className="target-footer"><div className="footer-brand"><span>S/S</span><h2>{c.brand.name}</h2><p>Pan-Asian soul and Italian instinct, served with a distinctly Lucknow rhythm.</p></div><div><h3>Find us</h3><p>{c.contact.address}</p><a href={`mailto:${c.contact.email}`}>{c.contact.email}</a></div><div><h3>Opening hours</h3>{c.contact.hours.map((h,i)=><p key={i}>{h}</p>)}<Link to="/contact">Reservations & enquiries ↗</Link></div><div className="copyright">{c.footer.copyright}</div></footer>}
-function Layout({c,children}){return <div className="site-frame"><Header c={c}/><SectionRail c={c}/><main>{children}</main><Footer c={c}/></div>}
+function Layout({c,s,children}){return <div className="site-frame"><PetalField settings={s}/><Header c={c}/><SectionRail c={c}/><main>{children}</main><Footer c={c}/></div>}
 function Intro({eyebrow,title,intro}){return <section className="intro"><p className="eyebrow">{eyebrow}</p><h1>{splitLines(title)}</h1>{intro&&<p className="lead">{intro}</p>}</section>}
 function Home({c}){const h=c.home;return <>
  <section className="after-dark-hero" style={{backgroundImage:`linear-gradient(100deg,rgba(11,10,9,.90),rgba(11,10,9,.42)),url(${h.media.imageOne})`}}>
@@ -61,5 +79,5 @@ function Admin({c,s,setC,setS}){
  const active=tab==='content'?c:s;const setActive=tab==='content'?setC:setS;
  return <div className="admin"><div className="admin-top"><div><p className="eyebrow">Saffron & Silk</p><h1>Site editor</h1></div><div><button onClick={()=>setTab('content')} className={tab==='content'?'active':''}>Content</button><button onClick={()=>setTab('settings')} className={tab==='settings'?'active':''}>Design</button><button onClick={async()=>{setStatus('Saving…');try{await saveSiteData(c,s);setStatus('Saved')}catch(e){setStatus(e.message)}}}>Save changes</button><button onClick={()=>supabase.auth.signOut()}>Log out</button></div></div><p className="status">{status}</p><ObjectEditor value={active} path={tab==='content'?'Website content':'Design settings'} onUpload={uploadSiteMedia} onChange={setActive}/></div>
 }
-function App(){const[c,setC]=useState(null),[s,setS]=useState(null),[error,setError]=useState('');useEffect(()=>{loadSiteData().then(d=>{setC(d.content);setS(d.settings)}).catch(e=>setError(e.message))},[]);if(error)return <div className="loading"><h1>Saffron & Silk</h1><p>{error}</p></div>;if(!c||!s)return <div className="loading">Loading Saffron & Silk…</div>;return <Routes><Route path="/admin" element={<Admin c={c} s={s} setC={setC} setS={setS}/>}/><Route path="*" element={<Layout c={c}><Routes><Route path="/" element={<Home c={c}/>}/><Route path="/brand-story" element={<Story c={c}/>}/><Route path="/events" element={<Events c={c}/>}/><Route path="/catering" element={<Catering c={c}/>}/><Route path="/menu" element={<Menu c={c}/>}/><Route path="/contact" element={<Contact c={c}/>}/><Route path="*" element={<Navigate to="/" replace/>}/></Routes></Layout>}/></Routes>}
+function App(){const[c,setC]=useState(null),[s,setS]=useState(null),[error,setError]=useState('');useEffect(()=>{loadSiteData().then(d=>{setC(d.content);setS(d.settings)}).catch(e=>setError(e.message))},[]);if(error)return <div className="loading"><h1>Saffron & Silk</h1><p>{error}</p></div>;if(!c||!s)return <div className="loading">Loading Saffron & Silk…</div>;return <Routes><Route path="/admin" element={<Admin c={c} s={s} setC={setC} setS={setS}/>}/><Route path="*" element={<Layout c={c} s={s}><Routes><Route path="/" element={<Home c={c}/>}/><Route path="/brand-story" element={<Story c={c}/>}/><Route path="/events" element={<Events c={c}/>}/><Route path="/catering" element={<Catering c={c}/>}/><Route path="/menu" element={<Menu c={c}/>}/><Route path="/contact" element={<Contact c={c}/>}/><Route path="*" element={<Navigate to="/" replace/>}/></Routes></Layout>}/></Routes>}
 export default App;
