@@ -1,0 +1,9 @@
+Add your licensed audio files here.
+
+Expected filenames in the starter content:
+- home.mp3
+- story.mp3
+- events.mp3
+- catering.mp3
+- menu.mp3
+- contact.mp3

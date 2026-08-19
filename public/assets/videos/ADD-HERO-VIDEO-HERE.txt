@@ -1,0 +1,1 @@
+Add an optional hero video here and set its path from the admin portal.
