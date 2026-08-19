@@ -15,16 +15,19 @@
 }
 
 /* Sakura drift lives only on interior pages. Layering order:
-   section backgrounds -> petals -> text/photos/cards/controls. */
+   section backgrounds -> petals -> ALL content -> navigation/controls. */
 .subpage { position: relative; }
-.sakura-layer { position: fixed; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
+.sakura-layer { position: fixed; inset: 0; z-index: 5; overflow: hidden; pointer-events: none; }
 .subpage > section,
 .subpage > .site-footer { position: relative; z-index: auto; }
-.subpage > section > *,
-.subpage > .site-footer > * { position: relative; z-index: 2; }
+.subpage > section *,
+.subpage > .site-footer * { position: relative; z-index: 10; }
 .sub-header,
+.sub-header *,
 .sub-mobile-menu,
-.music-control { z-index: 50; }
+.sub-mobile-menu *,
+.music-control,
+.music-control * { position: relative; z-index: 50; }
 .sakura-petal {
   position: absolute; top: -8vh; display: block; width: 12px; height: 18px;
   background: radial-gradient(circle at 35% 28%, #fff7f8 0 12%, #f7c8d1 32%, #dc8da0 100%);
