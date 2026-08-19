@@ -15,9 +15,7 @@
 }
 
 /* Site-wide sakura drift: decorative, non-interactive and motion-safe. */
-.sakura-layer { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
-.subpage > section,
-.subpage > .site-footer { position: relative; z-index: 1; }
+.sakura-layer { position: fixed; inset: 0; z-index: 35; overflow: hidden; pointer-events: none; }
 .sakura-petal {
   position: absolute; top: -8vh; display: block; width: 12px; height: 18px;
   background: radial-gradient(circle at 35% 28%, #fff7f8 0 12%, #f7c8d1 32%, #dc8da0 100%);
