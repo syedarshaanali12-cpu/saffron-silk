@@ -6,4 +6,23 @@ import Home from './site/Home';
 import { Story, Events, Catering, Menu, Contact } from './site/Pages';
 import Admin from './site/Admin';
 
-export default function App(){const[c,setC]=useState(null),[s,setS]=useState(null),[error,setError]=useState('');useEffect(()=>{loadSiteData().then(d=>{setC(d.content);setS(d.settings)}).catch(e=>setError(e.message))},[]);if(error)return <div className="loading"><h1>Saffron & Silk</h1><p>{error}</p></div>;if(!c||!s)return <div className="loading">Loading Saffron & Silk…</div>;return <><SiteExperience content={c} settings={s}/><Routes><Route path="/" element={<Home content={c} settings={s}/>}/><Route path="/brand-story" element={<Story content={c} settings={s}/>}/><Route path="/events" element={<Events content={c} settings={s}/>}/><Route path="/catering" element={<Catering content={c} settings={s}/>}/><Route path="/menu" element={<Menu content={c} settings={s}/>}/><Route path="/contact" element={<Contact content={c} settings={s}/>}/><Route path="/admin" element={<Admin c={c} s={s} setC={setC} setS={setS}/>}/><Route path="*" element={<Navigate to="/" replace/>}/></Routes></>}
+const Loading=({error})=><div className="loading"><h1>Saffron & Silk</h1><p>{error||'Loading Saffron & Silk…'}</p></div>;
+
+export default function App(){
+  const[c,setC]=useState(null),[s,setS]=useState(null),[error,setError]=useState('');
+  useEffect(()=>{loadSiteData().then(d=>{setC(d.content);setS(d.settings)}).catch(e=>setError(e.message))},[]);
+  const ready=Boolean(c&&s);
+  return <>
+    {ready&&<SiteExperience content={c} settings={s}/>} 
+    <Routes>
+      <Route path="/admin" element={<Admin c={c} s={s} setC={setC} setS={setS} loadError={error}/>}/>
+      <Route path="/" element={ready?<Home content={c} settings={s}/>:<Loading error={error}/>}/>
+      <Route path="/brand-story" element={ready?<Story content={c} settings={s}/>:<Loading error={error}/>}/>
+      <Route path="/events" element={ready?<Events content={c} settings={s}/>:<Loading error={error}/>}/>
+      <Route path="/catering" element={ready?<Catering content={c} settings={s}/>:<Loading error={error}/>}/>
+      <Route path="/menu" element={ready?<Menu content={c} settings={s}/>:<Loading error={error}/>}/>
+      <Route path="/contact" element={ready?<Contact content={c} settings={s}/>:<Loading error={error}/>}/>
+      <Route path="*" element={<Navigate to="/" replace/>}/>
+    </Routes>
+  </>
+}
