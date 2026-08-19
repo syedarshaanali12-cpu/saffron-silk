@@ -35,14 +35,13 @@ function NavigationEditor({navigation, onChange}) {
 }
 
 function MusicEditor({music, onChange, onUpload}) {
-  const tracks=Object.values(music||{});
-  const current=tracks.find(track=>track?.audioSrc)?.audioSrc||'';
-  const upload=async file=>{
+  const pageNames={'/':'Home','/brand-story':'Our Story','/events':'Events','/catering':'Catering','/menu':'Menu','/contact':'Contact'};
+  const upload=async(route,file)=>{
     if(!file)return;
     const audioSrc=await onUpload(file);
-    onChange(Object.fromEntries(Object.entries(music||{}).map(([route,track])=>[route,{...track,audioSrc}])));
+    onChange({...music,[route]:{...(music?.[route]||{}),audioSrc}});
   };
-  return <section className="admin-card"><div className="admin-card-heading"><div><p className="eyebrow">Site music</p><h2>Upload one MP3</h2></div><p>This track plays from the music button on every page.</p></div>{current?<div className="admin-media-preview admin-media-preview--audio"><audio controls src={current}/><span>Current MP3</span></div>:<div className="menu-art-empty">No MP3 uploaded yet</div>}<label className="admin-upload admin-upload--large"><b>{current?'Replace MP3':'Upload MP3'}</b><input type="file" accept="audio/mpeg,.mp3" onChange={event=>upload(event.target.files?.[0])}/></label></section>;
+  return <section className="admin-card"><div className="admin-card-heading"><div><p className="eyebrow">Page music</p><h2>One MP3 for each page</h2></div><p>Upload a different track for every page. Technical music settings stay hidden.</p></div><div className="menu-admin-grid">{Object.entries(pageNames).map(([route,label])=>{const current=music?.[route]?.audioSrc||'';return <article className="menu-admin-card" key={route}><div className="menu-admin-number">{label}</div>{current?<div className="admin-media-preview admin-media-preview--audio"><audio controls src={current}/><span>Current MP3</span></div>:<div className="menu-art-empty">No MP3 uploaded yet</div>}<label className="admin-upload admin-upload--large"><b>{current?'Replace MP3':'Upload MP3'}</b><input type="file" accept="audio/mpeg,.mp3" onChange={event=>upload(route,event.target.files?.[0])}/></label></article>})}</div></section>;
 }
 
 function MenuEditor({menu, onChange, onUpload}) {
