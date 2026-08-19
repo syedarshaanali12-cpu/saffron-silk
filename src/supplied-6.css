@@ -23,7 +23,8 @@
 .subpage > section,
 .subpage > .site-footer { position: relative; z-index: auto; }
 .subpage > section > *,
-.subpage > .site-footer > * { position: relative; z-index: 3; }
+.subpage > .site-footer > *,
+.subpage > figure { position: relative; z-index: 3; }
 .sub-header,
 .sub-mobile-menu,
 .music-control { z-index: 50; }
