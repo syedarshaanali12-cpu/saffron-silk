@@ -1,0 +1,47 @@
+.service-grid p { max-width: 370px; font-size: 13px; line-height: 1.75; }
+.catering-note { padding: 85px 20px; display: grid; place-items: center; text-align: center; background: var(--cream); color: var(--wine); }
+.catering-note p { max-width: 800px; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(30px, 4vw, 58px); font-style: italic; line-height: 1.05; }
+
+.menu-page { background: var(--sand); color: var(--wine); }
+.menu-intro { padding: 160px 24px 90px; text-align: center; }
+.menu-intro h1 { margin: 0; font-family: "Bebas Neue", Impact, sans-serif; font-size: clamp(90px, 13vw, 190px); line-height: .85; font-weight: 400; text-transform: uppercase; }
+.menu-intro > p:last-child { max-width: 610px; margin: 28px auto 0; font-size: 13px; line-height: 1.8; }
+.menu-stack { width: min(74vw, 1080px); margin: 0 auto; padding-bottom: 130px; display: grid; gap: 44px; }
+.menu-sheet { min-height: 670px; padding: clamp(34px, 5vw, 74px); background: var(--paper); box-shadow: 0 22px 48px rgba(74,42,29,.14); }
+.menu-sheet > header { display: grid; grid-template-columns: 60px 1fr auto; align-items: center; padding-bottom: 25px; border-bottom: 1px solid rgba(99,35,33,.38); }
+.menu-sheet > header span, .menu-sheet > header p { font-size: 9px; text-transform: uppercase; letter-spacing: .17em; }
+.menu-sheet > header h2 { margin: 0; text-align: center; font-family: "Bebas Neue", Impact, sans-serif; font-size: clamp(50px, 6vw, 84px); font-weight: 400; }
+.menu-items { padding-top: 45px; display: grid; grid-template-columns: 1fr 1fr; column-gap: clamp(40px, 7vw, 105px); }
+.menu-item { min-height: 116px; padding: 22px 0; display: flex; justify-content: space-between; gap: 20px; border-bottom: 1px solid rgba(99,35,33,.22); }
+.menu-item h3 { margin: 0 0 8px; font-family: "Bebas Neue", Impact, sans-serif; font-size: clamp(22px, 2.4vw, 32px); font-weight: 400; letter-spacing: .02em; }
+.menu-item p { margin: 0; font-size: 11px; line-height: 1.6; color: rgba(99,35,33,.72); }
+.menu-item b { font-size: 12px; font-weight: 500; white-space: nowrap; }
+
+.contact-page { background: var(--cream); color: var(--wine); }
+.visit-grid { min-height: 100svh; padding: 138px clamp(24px, 7vw, 108px) 90px; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(48px, 8vw, 120px); align-items: center; }
+.visit-image { height: min(72vh, 720px); margin: 0; position: relative; overflow: hidden; border-radius: 3px; box-shadow: 0 22px 55px rgba(63,31,22,.12); }
+.visit-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.visit-image span { position: absolute; left: 18px; bottom: 16px; padding: 8px 11px; background: rgba(18,11,9,.73); color: #fff; font-size: 9px; letter-spacing: .16em; text-transform: uppercase; }
+.visit-copy h1 { margin: 0 0 42px; font-family: "Bebas Neue", Impact, sans-serif; font-size: clamp(78px, 8vw, 130px); line-height: .82; font-weight: 400; }
+.visit-copy dl { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; }
+.visit-copy dl div { border-top: 1px solid rgba(99,35,33,.35); padding-top: 18px; }
+.visit-copy dt { margin-bottom: 12px; font-family: "Bebas Neue", Impact, sans-serif; font-size: 22px; }
+.visit-copy dd { margin: 0; font-size: 12px; line-height: 1.75; }
+.visit-copy dd a { text-decoration: underline; text-underline-offset: 4px; }
+.outline-button { display: inline-block; margin-top: 38px; padding: 14px 21px; border: 1px solid currentColor; border-radius: 3px; font-size: 11px; font-weight: 600; transition: background 250ms, color 250ms; }
+.outline-button:hover { background: var(--wine); color: #fff; }
+.contact-form-section { padding: 120px clamp(24px, 10vw, 155px); display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(50px, 9vw, 140px); background: var(--wine); color: var(--cream); }
+.contact-form-section h2 { margin: 0 0 20px; font-family: "Bebas Neue", Impact, sans-serif; font-size: clamp(70px, 8vw, 120px); font-weight: 400; line-height: .86; }
+.contact-form-section > div > p:last-child { max-width: 430px; font-size: 13px; line-height: 1.8; }
+.contact-form-section form { display: grid; gap: 26px; }
+.contact-form-section label { display: grid; gap: 10px; font-size: 9px; text-transform: uppercase; letter-spacing: .17em; }
+.contact-form-section input, .contact-form-section textarea { width: 100%; padding: 14px 0; border: 0; border-bottom: 1px solid rgba(221,214,204,.55); outline: 0; resize: vertical; background: transparent; color: var(--cream); font: 14px "Manrope", sans-serif; }
+.contact-form-section input:focus, .contact-form-section textarea:focus { border-color: #fff; }
+.contact-form-section input::placeholder, .contact-form-section textarea::placeholder { color: rgba(221,214,204,.55); }
+.contact-form-section button { width: fit-content; padding: 15px 24px; border: 0; border-radius: 3px; background: var(--cream); color: var(--wine); font: 600 11px "Manrope", sans-serif; cursor: pointer; }
+.form-success { margin: 0; font-size: 12px; opacity: 0; transform: translateY(6px); transition: opacity 300ms, transform 300ms; }
+.form-success.is-visible { opacity: 1; transform: translateY(0); }
+
+.site-footer { padding: 96px clamp(24px, 5vw, 76px) 28px; display: grid; grid-template-columns: 1.4fr .7fr .7fr; gap: 50px; background: #100a08; color: var(--cream); }
+.footer-mark { width: 52px; height: 52px; display: grid; place-items: center; border: 1px solid currentColor; border-radius: 50%; font-family: "Bebas Neue", Impact, sans-serif; }
+.site-footer h2 { margin: 20px 0 10px; font-family: "Bebas Neue", Impact, sans-serif; font-size: clamp(46px, 6vw, 84px); font-weight: 400; letter-spacing: .02em; }
