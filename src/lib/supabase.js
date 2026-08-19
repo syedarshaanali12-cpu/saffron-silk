@@ -1,7 +1,16 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabasePublishableKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+// Prefer Netlify/Vite environment variables when available, but fall back to
+// this project's public Supabase connection details. The publishable key is
+// intentionally safe for browser use; database/storage writes are protected
+// by Supabase Auth + RLS policies.
+const supabaseUrl =
+  import.meta.env.VITE_SUPABASE_URL ||
+  'https://zdpgkmpjrblmuagztlnp.supabase.co';
+
+const supabasePublishableKey =
+  import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY ||
+  'sb_publishable_AX2ZOx7khhPhnACZ8La2Sg_qQIkW9zc';
 
 export const isSupabaseConfigured = Boolean(supabaseUrl && supabasePublishableKey);
 
