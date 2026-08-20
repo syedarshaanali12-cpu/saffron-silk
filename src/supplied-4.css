@@ -69,8 +69,8 @@
 .photo-story summary::-webkit-details-marker,
 .event-card summary::-webkit-details-marker,
 .service-accordion summary::-webkit-details-marker { display: none; }
-.photo-story summary img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform 700ms var(--ease), filter 450ms ease; }
-.photo-story:hover summary img, .photo-story[open] summary img { transform: scale(1.035); filter: brightness(.72); }
+.photo-story summary img, .photo-story summary video { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform 700ms var(--ease), filter 450ms ease; }
+.photo-story:hover summary img, .photo-story[open] summary img, .photo-story:hover summary video, .photo-story[open] summary video { transform: scale(1.035); filter: brightness(.72); }
 .photo-prompt { position: absolute; left: 16px; right: 16px; bottom: 15px; z-index: 2; padding: 11px 13px; display: flex; justify-content: space-between; align-items: center; background: rgba(16,10,8,.78); color: #fff; font-size: 9px; text-transform: uppercase; letter-spacing: .16em; backdrop-filter: blur(8px); }
 .photo-prompt b, .details-toggle b { font-size: 18px; font-weight: 300; transition: transform 300ms var(--ease); }
 .photo-story[open] .photo-prompt b, .event-card[open] .details-toggle b, .service-accordion[open] summary > b { transform: rotate(45deg); }
