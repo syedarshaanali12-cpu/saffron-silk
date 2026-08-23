@@ -66,6 +66,7 @@ body {
 .music-control:focus-visible { outline: 2px solid #fffaf2; outline-offset: 3px; }
 .music-control i { width: 16px; height: 15px; display: flex; align-items: center; justify-content: center; gap: 2px; }
 .music-control b { width: 2px; height: 5px; display: block; background: currentColor; border-radius: 2px; }
+.music-control > span { max-width: min(44vw, 360px); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .music-control.is-playing b { animation: musicBar .72s ease-in-out infinite alternate; }
 .music-control.is-playing b:nth-child(2) { animation-delay: -.34s; }
 .music-control.is-playing b:nth-child(3) { animation-delay: -.55s; }

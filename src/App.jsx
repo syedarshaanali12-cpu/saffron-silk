@@ -31,6 +31,76 @@ const applyRequestedCopy=content=>{
   if(next.story.photos?.[0]) next.story.photos[0]={...next.story.photos[0],label:'The office',title:'No restraints',text:'We met, we went 2+2=4, we confessed and confided in the span of 18 days, made a rhythm, built inside jokes and all of it. We knew the intensity.'};
   if(next.story.photos?.[1]) next.story.photos[1]={...next.story.photos[1],label:'Ramadan and long distance',title:'Tested our longevity',text:'This was the toughest phase, and the phase where our relationship matured.'};
   next.catering={...(next.catering||{}),headingAccent:'Arsh.'};
+  const menuLongForm=next.menu?.longForm||{};
+  next.menu={
+    ...(next.menu||{}),
+    sections:(next.menu?.sections||[]).slice(0,4),
+    longForm:{
+      label:'The unabridged chapter',
+      heading:'OUR LOVE, IN FULL.',
+      ...menuLongForm,
+      paragraphs:Array.isArray(menuLongForm.paragraphs)?menuLongForm.paragraphs:[]
+    }
+  };
+  const whatNow=next.whatNow||{};
+  const whatNowForm=whatNow.form||{};
+  const photoDefaults=[
+    {src:'',alt:'',caption:''},
+    {src:'',alt:'',caption:''},
+    {src:'',alt:'',caption:''}
+  ];
+  const savedPhotos=Array.isArray(whatNow.photos)?whatNow.photos:[];
+  next.whatNow={
+    index:'06 · What now',
+    label:'The final chapter is not mine alone',
+    heading:'YOUR TURN, ILMA.',
+    intro:[
+      'I have told our story the way I see it.',
+      'I have told you how I see you.',
+      'I have told you who I am trying to become.',
+      'I have told you what this love means to me.'
+    ],
+    transition:"I don't get to write what comes next alone.",
+    photos:photoDefaults,
+    form:{
+      index:'Her chapter',
+      heading:'Where do we go from here?',
+      intro:'There are three things I want to ask you. Take all the space you need.',
+      prompts:[
+        'What does our pilgrimage mean to you?',
+        'What do you want from the man walking beside you?',
+        'Where do we go from here?'
+      ],
+      nextButton:'Continue ↗',
+      backButton:'Back',
+      button:'Add your chapter.',
+      success:'The Pilgrimage continues.',
+      error:'Your chapter could not be saved. Please try again.'
+    },
+    ...whatNow,
+    photos:photoDefaults.map((fallback,index)=>({...fallback,...(savedPhotos[index]||{})})),
+    form:{
+      index:'Her chapter',
+      heading:'Where do we go from here?',
+      intro:'There are three things I want to ask you. Take all the space you need.',
+      prompts:[
+        'What does our pilgrimage mean to you?',
+        'What do you want from the man walking beside you?',
+        'Where do we go from here?'
+      ],
+      nextButton:'Continue ↗',
+      backButton:'Back',
+      button:'Add your chapter.',
+      success:'The Pilgrimage continues.',
+      error:'Your chapter could not be saved. Please try again.',
+      ...whatNowForm,
+      prompts:Array.isArray(whatNowForm.prompts)&&whatNowForm.prompts.length===3?whatNowForm.prompts:[
+        'What does our pilgrimage mean to you?',
+        'What do you want from the man walking beside you?',
+        'Where do we go from here?'
+      ]
+    }
+  };
   return next;
 };
 

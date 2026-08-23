@@ -44,6 +44,51 @@
 .form-success { margin: 0; font-size: 12px; opacity: 0; transform: translateY(6px); transition: opacity 300ms, transform 300ms; }
 .form-success.is-visible { opacity: 1; transform: translateY(0); }
 
+/* What Now: the final chapter leaves Arshaan's narration and makes room for Ilma. */
+.what-now-page { background: var(--cream); color: var(--wine); }
+.what-now-hero { min-height: 100svh; padding: 152px clamp(24px, 8vw, 128px) 100px; display: grid; place-items: center; text-align: center; background: radial-gradient(circle at 50% 35%, rgba(255,250,242,.82), transparent 48%), var(--cream); }
+.what-now-opening { width: min(1020px, 100%); }
+.what-now-label { margin: 16px 0 70px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .22em; }
+.what-now-lines { display: grid; gap: 9px; }
+.what-now-lines p { margin: 0; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(24px, 3vw, 40px); font-style: italic; line-height: 1.15; }
+.what-now-transition { width: min(620px,100%); margin: 76px auto 22px; font-size: 13px; line-height: 1.8; }
+.what-now-opening h1 { margin: 0; font-family: "Bebas Neue", Impact, sans-serif; font-size: clamp(88px, 13.5vw, 205px); font-weight: 400; line-height: .78; letter-spacing: -.025em; text-transform: uppercase; }
+.what-now-gallery { padding: 110px clamp(24px, 6vw, 92px) 130px; display: grid; grid-template-columns: 1.05fr .78fr 1.05fr; gap: clamp(20px, 3vw, 44px); align-items: end; background: var(--sand); }
+.what-now-photo { position: relative; height: clamp(430px, 58vw, 720px); margin: 0; overflow: hidden; background: #c2aa90; box-shadow: 0 22px 55px rgba(63,31,22,.12); }
+.what-now-photo--2 { height: clamp(350px, 46vw, 580px); align-self: start; margin-top: 9vw; }
+.what-now-photo img, .what-now-photo video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.what-now-photo.is-empty > div { width: 100%; height: 100%; display: grid; place-items: center; background: linear-gradient(145deg, rgba(255,250,242,.18), transparent), repeating-linear-gradient(135deg, transparent 0 24px, rgba(99,35,33,.035) 24px 25px); }
+.what-now-photo.is-empty span { width: 54px; height: 54px; display: grid; place-items: center; border: 1px solid rgba(99,35,33,.45); border-radius: 50%; font: 400 18px "Bebas Neue", Impact, sans-serif; }
+.what-now-photo figcaption { position: absolute; left: 16px; right: 16px; bottom: 15px; padding: 10px 12px; background: rgba(16,10,8,.78); color: #fff; font-size: 9px; text-transform: uppercase; letter-spacing: .15em; backdrop-filter: blur(8px); }
+.what-now-form-section { padding: 125px clamp(24px, 9vw, 145px); display: grid; grid-template-columns: .82fr 1.18fr; gap: clamp(54px, 9vw, 140px); background: var(--wine); color: var(--cream); }
+.what-now-form-section > div > h2 { margin: 0 0 25px; font-family: "Bebas Neue", Impact, sans-serif; font-size: clamp(70px, 8vw, 122px); font-weight: 400; line-height: .84; }
+.what-now-form-section > div > p:last-child { max-width: 430px; font-size: 13px; line-height: 1.8; }
+.what-now-form-section form { display: grid; align-content: center; gap: 30px; }
+.what-now-progress { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; font-size: 9px; letter-spacing: .16em; }
+.what-now-progress i { height: 1px; background: rgba(221,214,204,.35); }
+.what-now-progress b { display: block; height: 1px; background: var(--cream); transition: width 420ms var(--ease); }
+.what-now-form-section label { display: grid; gap: 18px; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(30px, 4vw, 52px); font-style: italic; line-height: 1.05; }
+.what-now-form-section textarea { width: 100%; min-height: 230px; box-sizing: border-box; padding: 18px 0; border: 0; border-bottom: 1px solid rgba(221,214,204,.55); outline: 0; resize: vertical; background: transparent; color: var(--cream); font: 14px/1.8 "Manrope", sans-serif; }
+.what-now-form-section textarea:focus { border-color: #fff; }
+.what-now-form-section textarea::placeholder { color: rgba(221,214,204,.46); }
+.what-now-actions { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.what-now-actions button { padding: 15px 24px; border: 1px solid var(--cream); border-radius: 3px; background: var(--cream); color: var(--wine); font: 600 11px "Manrope", sans-serif; cursor: pointer; }
+.what-now-actions button:disabled { opacity: .58; cursor: wait; }
+.what-now-actions .what-now-back { background: transparent; color: var(--cream); }
+.form-error { min-height: 18px; margin: 0; opacity: 0; font-size: 11px; transition: opacity 250ms; }
+.form-error.is-visible { opacity: 1; }
+.what-now-success { min-height: 420px; display: grid; place-items: center; align-content: center; gap: 28px; text-align: center; border: 1px solid rgba(221,214,204,.42); }
+.what-now-success span { width: 72px; height: 72px; display: grid; place-items: center; border: 1px solid currentColor; border-radius: 50%; font-family: "Bebas Neue", Impact, sans-serif; }
+.what-now-success p { margin: 0; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(34px, 4vw, 58px); font-style: italic; }
+
+/* Our Love: a quiet reading section after the four artwork slots. */
+.love-longform { padding: 135px clamp(24px, 8vw, 128px) 155px; background: var(--paper); color: var(--wine); }
+.love-longform header { width: min(820px, 100%); margin: 0 auto 74px; text-align: center; }
+.love-longform h2 { margin: 0; font-family: "Bebas Neue", Impact, sans-serif; font-size: clamp(75px, 9vw, 142px); font-weight: 400; line-height: .84; }
+.love-longform-copy { width: min(760px, 100%); margin: 0 auto; }
+.love-longform-copy p { margin: 0 0 2em; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(19px, 1.8vw, 24px); line-height: 1.9; }
+.love-longform-copy p:first-child::first-letter { float: left; padding: .08em .12em 0 0; font: 400 4.4em/.74 "Bebas Neue", Impact, sans-serif; }
+
 .site-footer { padding: 96px clamp(24px, 5vw, 76px) 28px; display: grid; grid-template-columns: 1.4fr .7fr .7fr; gap: 50px; background: #100a08; color: var(--cream); }
 .footer-mark { width: 52px; height: 52px; display: grid; place-items: center; border: 1px solid currentColor; border-radius: 50%; font-family: "Bebas Neue", Impact, sans-serif; }
 .site-footer h2 { margin: 20px 0 10px; font-family: "Bebas Neue", Impact, sans-serif; font-size: clamp(46px, 6vw, 84px); font-weight: 400; letter-spacing: .02em; }

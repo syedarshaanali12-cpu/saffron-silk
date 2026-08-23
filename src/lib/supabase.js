@@ -62,3 +62,13 @@ export async function uploadSiteMedia(file) {
   const { data } = supabase.storage.from('site-media').getPublicUrl(fileName);
   return data.publicUrl;
 }
+
+export async function submitWhatNowResponse(answers) {
+  if (!supabase) throw new Error('Supabase is not configured');
+  const { error } = await supabase.from('pilgrimage_responses').insert({
+    pilgrimage_meaning: answers[0],
+    walking_beside: answers[1],
+    where_next: answers[2],
+  });
+  if (error) throw error;
+}
