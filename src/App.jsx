@@ -7,7 +7,7 @@ import { Story, Events, Catering, Menu, Contact } from './site/Pages';
 import Admin from './site/Admin';
 
 const replaceBrandText=value=>{
-  if(typeof value==='string') return value.replace(/S\/S/g,'I/A').replace(/s\/s/g,'I/A').replace(/Saffron\s*&\s*Silk/gi,'The Proposal').replace(/Saffron and Silk/gi,'The Proposal');
+  if(typeof value==='string') return value.replace(/S\/S/g,'I/A').replace(/s\/s/g,'I/A').replace(/The Proposal/gi,'The Pilgrimage').replace(/Saffron\s*&\s*Silk/gi,'The Pilgrimage').replace(/Saffron and Silk/gi,'The Pilgrimage');
   if(Array.isArray(value)) return value.map(replaceBrandText);
   if(value&&typeof value==='object') return Object.fromEntries(Object.entries(value).map(([key,item])=>[key,replaceBrandText(item)]));
   return value;
@@ -15,12 +15,19 @@ const replaceBrandText=value=>{
 
 const applyRequestedCopy=content=>{
   const next=replaceBrandText(content);
-  next.shared={...(next.shared||{}),brandName:'The Proposal',monogram:'I/A',siteTitle:'The Pilgrimage'};
+  next.shared={...(next.shared||{}),brandName:'The Pilgrimage',monogram:'I/A',siteTitle:'The Pilgrimage'};
   next.shared.navigation=(next.shared.navigation||[]).map(item=>({
     ...item,
     label:item.href==='/brand-story'?'Our Story':item.href==='/events'?'Her Beauty':item.href==='/menu'?'Our Love':item.href==='/catering'?'Arsh':item.label
   }));
   next.home={...(next.home||{}),eyebrow:'The Dame The Brute',headline:'ACTIONS ONLY',headlineAccent:'they speak.',storyPanel:{...(next.home?.storyPanel||{}),kicker:'two hearts unified',heading:'our versions of love,',headingSecondLine:'without compromise',note:'An original form of love that combines our ecstasy with passion. Pilgrimage, where we come together as one this time.'}};
+  next.music={
+    ...(next.music||{}),
+    '/':{
+      ...(next.music?.['/']||{}),
+      title:'Pashmina - Full Song _ Fitoor _ Aditya Roy Kapur, Katrina Kaif _ Amit Trivedi [R1XIXSXKuCw](1).mp3'
+    }
+  };
   next.story={...(next.story||{}),heading:'OBSESSION',headingAccent:'ethereal romance.',intro:[
     'We began with one simple belief, in each other. We were learning about each other, and we found familiarity. Then that familiarity turned into a friendship, a bond as strong as the stars gazed from above and smiled.',
     'From manager and intern, to mentor and prodigy, to friends, to one. The long due scooty ride, the coffee with black salt, it was soaking our hearts with ointment.'
@@ -118,7 +125,7 @@ const applyRequestedCopy=content=>{
   return next;
 };
 
-const Loading=({error})=><div className="loading"><h1>The Proposal</h1><p>{error||'Loading The Proposal…'}</p></div>;
+const Loading=({error})=><div className="loading"><h1>The Pilgrimage</h1><p>{error||'Loading The Pilgrimage…'}</p></div>;
 
 export default function App(){
   const[c,setC]=useState(null),[s,setS]=useState(null),[error,setError]=useState('');
