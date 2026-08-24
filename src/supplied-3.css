@@ -53,10 +53,10 @@
 .what-now-lines p { margin: 0; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(24px, 3vw, 40px); font-style: italic; line-height: 1.15; }
 .what-now-transition { width: min(620px,100%); margin: 76px auto 22px; font-size: 13px; line-height: 1.8; }
 .what-now-opening h1 { margin: 0; font-family: "Bebas Neue", Impact, sans-serif; font-size: clamp(88px, 13.5vw, 205px); font-weight: 400; line-height: .78; letter-spacing: -.025em; text-transform: uppercase; }
-.what-now-gallery { padding: 110px clamp(24px, 6vw, 92px) 130px; display: grid; grid-template-columns: 1.05fr .78fr 1.05fr; gap: clamp(20px, 3vw, 44px); align-items: end; background: var(--sand); }
-.what-now-photo { position: relative; height: clamp(430px, 58vw, 720px); margin: 0; overflow: hidden; background: #c2aa90; box-shadow: 0 22px 55px rgba(63,31,22,.12); }
-.what-now-photo--2 { height: clamp(350px, 46vw, 580px); align-self: start; margin-top: 9vw; }
-.what-now-photo img, .what-now-photo video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.what-now-gallery { padding: 110px clamp(24px, 6vw, 92px) 130px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3vw, 44px); align-items: stretch; background: var(--sand); }
+.what-now-photo { position: relative; width: 100%; aspect-ratio: 4 / 5; height: auto; min-height: 0; margin: 0; overflow: hidden; background: #c2aa90; box-shadow: 0 22px 55px rgba(63,31,22,.12); }
+.what-now-photo--2 { align-self: auto; margin-top: 0; }
+.what-now-photo img, .what-now-photo video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .what-now-photo.is-empty > div { width: 100%; height: 100%; display: grid; place-items: center; background: linear-gradient(145deg, rgba(255,250,242,.18), transparent), repeating-linear-gradient(135deg, transparent 0 24px, rgba(99,35,33,.035) 24px 25px); }
 .what-now-photo.is-empty span { width: 54px; height: 54px; display: grid; place-items: center; border: 1px solid rgba(99,35,33,.45); border-radius: 50%; font: 400 18px "Bebas Neue", Impact, sans-serif; }
 .what-now-photo figcaption { position: absolute; left: 16px; right: 16px; bottom: 15px; padding: 10px 12px; background: rgba(16,10,8,.78); color: #fff; font-size: 9px; text-transform: uppercase; letter-spacing: .15em; backdrop-filter: blur(8px); }
