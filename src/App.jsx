@@ -32,9 +32,23 @@ const applyRequestedCopy=content=>{
   if(next.story.photos?.[1]) next.story.photos[1]={...next.story.photos[1],label:'Ramadan and long distance',title:'Tested our longevity',text:'This was the toughest phase, and the phase where our relationship matured.'};
   next.catering={...(next.catering||{}),headingAccent:'Arsh.'};
   const menuLongForm=next.menu?.longForm||{};
+  const loveSectionCopy=[
+    {title:'The IBBU Collection',note:'Where our hearts belong',imageAlt:'The IBBU Collection moodboard'},
+    {title:'Peace, Serenity & Calm',note:'When an insomniac actually feels safe',imageAlt:'Peace, Serenity and Calm moodboard'},
+    {title:'Little Ilma',note:"We'll make her proud",imageAlt:'Little Ilma nostalgia moodboard'},
+    {title:"Ilma's Favourites",note:'Where her heart belongs',imageAlt:"Ilma's Favourites moodboard"}
+  ];
   next.menu={
     ...(next.menu||{}),
-    sections:(next.menu?.sections||[]).slice(0,4),
+    index:'The little worlds within us',
+    heading:'OUR LOVE',
+    intro:'Four little worlds holding pieces of you, pieces of me, and the tenderness we keep finding in each other.',
+    currency:'',
+    sections:(next.menu?.sections||[]).slice(0,4).map((section,index)=>({
+      ...section,
+      ...loveSectionCopy[index],
+      items:[]
+    })),
     longForm:{
       label:'The unabridged chapter',
       heading:'OUR LOVE, IN FULL.',
